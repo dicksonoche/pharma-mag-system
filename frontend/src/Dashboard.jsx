@@ -1,4 +1,5 @@
-import { Link } from "react-router-dom"
+import { Link, Outlet } from "react-router-dom"
+import "bootstrap-icons/font/bootstrap-icons.css"
 
 const Dashboard = () => {
     return (
@@ -15,11 +16,11 @@ const Dashboard = () => {
                                     <i className="fs-4 bi-speedometer2"></i> <span className="ms-1 d-none d-sm-inline">Dashboard</span> </Link>
                             </li>
                             <li>
-                                <Link to="/employee" className="nav-link px-0 align-middle text-white">
-                                    <i className="fs-4 bi-people"></i> <span className="ms-1 d-none d-sm-inline">Manage Tasks</span> </Link>
+                                <Link to="/task" className="nav-link px-0 align-middle text-white">
+                                    <i className="fs-4 bi-list-task"></i> <span className="ms-1 d-none d-sm-inline">Manage Tasks</span> </Link>
                             </li>
                             <li>
-                                <Link to="profile" className="nav-link px-0 align-middle text-white">
+                                <Link to="/profile" className="nav-link px-0 align-middle text-white">
                                     <i className="fs-4 bi-person"></i> <span className="ms-1 d-none d-sm-inline">Profile</span></Link>
                             </li>
                             <li>
@@ -33,6 +34,7 @@ const Dashboard = () => {
                     <div className='p-2 d-flex justify-content-center shadow'>
                         <h4>Pharmacy Management System</h4>
                     </div>
+                    <Outlet />
                 </div>
             </div>
         </div>

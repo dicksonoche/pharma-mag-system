@@ -11,6 +11,7 @@ const app = express();
 app.use(cors());
 app.use(cookieParser());
 app.use(express.json());
+app.use(express.static('public'))//to access the images. Means that the public folder can be accessed
 
 const con = mysql.createConnection({
     host: "localhost",
@@ -40,7 +41,7 @@ con.connect(function (err) {
     }
 })
 
-//to create the login API
+//To create the login API
 
 app.post('/login', (req, res) => {
     const sql = "SELECT * FROM users Where email = ? AND password = ?"; //This is the query
@@ -66,12 +67,20 @@ app.post('/create', upload.single('myimage'), (req, res) => {
             req.body.description,
             req.file.filename
         ]
-        con.query(sql, [data], (er, result) => {
-            if(err) return res.json({ Error: "Inside signup query" })
-            return res.json({ Status: "Success" });
+        con.query(sql, [data], (err, result) => {
+            if(err) return res.json({ Error: "Inside signup query" })//res.data.Error(in Frontend)
+            return res.json({ Status: "Success", Result: result });//res.data.Status(in Frontend)
         })
     }) //callback funtion (err)
 }) //npm install multer path. multer is used for uploading files
+
+app.get('/getTasks', (req, res) => {
+    const sql = "SELECT * FROM tasks"//This is the query
+    con.query(sql, (err, result) => {
+        if(err) return res.json({ Error: "Get task error in sql" })//res.data.Error(in Frontend)
+        return res.json({ Status: "Success", Result: result })//res.data.Status(in Frontend)
+    })//The two params "err" and "result". If there's error, display error message. If no error, return the result.
+})
 
 app.listen(9876, () => {
     console.log("Running");

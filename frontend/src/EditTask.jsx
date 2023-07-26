@@ -2,7 +2,7 @@ import axios from "axios";
 import { useState } from "react"
 import { useNavigate } from "react-router-dom";
 
-const AddTask = () => {
+const EditTask = () => {
     const [data, setData] = useState({
         name: '',
         email: '',
@@ -34,7 +34,7 @@ const AddTask = () => {
 
     return (
         <div className='d-flex flex-column align-items-center pt-4'>
-            <h2>Add New Task</h2>
+            <h2>Update Task</h2>
             <form className="row g-3 w-50" onSubmit={handleSubmit}>
                 <div className="col-12">
                     <label htmlFor="inputName" className="form-label">Name</label>
@@ -74,4 +74,4 @@ const AddTask = () => {
     )
 }
 
-export default AddTask
+export default EditTask

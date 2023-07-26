@@ -10,3 +10,9 @@
 background-color: rgba(1, 32, 93, 0.6);
 color: white;
 }
+
+.task_image {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}

@@ -5,6 +5,7 @@ import Task from "./Task"
 import Profile from "./Profile"
 import Home from "./Home"
 import AddTask from "./AddTask"
+import EditTask from "./AddTask"
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
           <Route path="/task" element={<Task />}></Route>
           <Route path="/profile" element={<Profile />}></Route>
           <Route path="/create" element={<AddTask />}></Route>
+          <Route path="/taskEdit/:id" element={<EditTask />}></Route>
         </Route>
         <Route path="/login" element={<Login />}></Route>
       </Routes>

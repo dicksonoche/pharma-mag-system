@@ -1,4 +1,4 @@
-#A Cost of Goods Management System for Pharma Industries
+##A Cost of Goods Management System for Pharma Industries
 
 This app is a comprehensive Management System designed to help pharmaceutical industries efficiently organize, track, and modify their cost of goods. This system aims to provide transparency, optimize cost structures, and facilitate informed decision-making throughout the production process.
 The frontend for this project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app) and [Vite](https://github.com/vitejs/vite).

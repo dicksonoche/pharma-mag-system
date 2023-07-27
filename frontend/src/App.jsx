@@ -5,7 +5,7 @@ import Task from "./Task"
 import Profile from "./Profile"
 import Home from "./Home"
 import AddTask from "./AddTask"
-import EditTask from "./AddTask"
+import EditTask from "./EditTask"
 
 function App() {
   return (

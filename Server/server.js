@@ -74,12 +74,44 @@ app.post('/create', upload.single('myimage'), (req, res) => {
     }) //callback funtion (err)
 }) //npm install multer path. multer is used for uploading files
 
+
+//To get the tasks for display 
 app.get('/getTasks', (req, res) => {
     const sql = "SELECT * FROM tasks"//This is the query
     con.query(sql, (err, result) => {
         if(err) return res.json({ Error: "Get task error in sql" })//res.data.Error(in Frontend)
         return res.json({ Status: "Success", Result: result })//res.data.Status(in Frontend)
     })//The two params "err" and "result". If there's error, display error message. If no error, return the result.
+})
+
+//To get the id for updates
+app.get('/get/:id', (req, res) => {
+    const id = req.params.id
+    const sql = "SELECT * FROM tasks where id = ?"
+    con.query(sql, [id], (err, result) => {
+        if(err) return res.json({ Error: "Get task error in sql" })//res.data.Error(in Frontend)
+        return res.json({ Status: "Success", Result: result })//res.data.Status(in Frontend)
+    })//The two params "err" and "result". If there's error, display error message. If no error, return the result.
+})
+
+//To create the update api for posting
+app.put('/update/:id', (req, res) => {
+    const id = req.params.id
+    const sql = "UPDATE tasks set cost = ? WHERE id = ?";
+    con.query(sql, [req.body.cost, id], (err, result) => {
+        if(err) return res.json({ Error: "Update task error in sql" })
+        return res.json({ Status: "Success" })
+    })
+})
+
+//To delete a task
+app.delete('/delete/:id', (req, res) => {
+    const id = req.params.id
+    const sql = "DELETE FROM tasks WHERE id = ?";
+    con.query(sql, [id], (err, result) => {
+        if(err) return req.json({ Error: "Delete task error in sql" })
+        return res.json({ Status: "Success" })
+    })
 })
 
 app.listen(9876, () => {

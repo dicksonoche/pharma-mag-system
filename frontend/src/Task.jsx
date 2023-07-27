@@ -21,6 +21,19 @@ const Task = () => {
             .catch(err => console.log(err));
     }, [])
 
+    const handleDelete = (id) => {
+        axios.delete('http://localhost:9876/delete/' + id)
+            .then(res => {
+                if (res.data.Status === "Success") {
+                    window.location.reload(true);
+                }
+                else {
+                    alert("Error");
+                }
+            })
+            .catch(err => console.log(err));
+    }
+
     return (
         <div className='px-5 py-3'>
             <div className='d-flex justify-content-center mt-2'>
@@ -54,8 +67,8 @@ const Task = () => {
                                     <td>{tasks.description}</td>
                                     <td>{tasks.cost}</td>
                                     <td>
-                                        <Link to= {`taskEdit/` + tasks.id} className="btn btn-primary btn-sm me-2">edit</Link>
-                                        <button className="btn btn-sm btn-danger">delete</button>
+                                        <Link to={`/taskEdit/` + tasks.id} className="btn btn-primary btn-sm me-2">edit</Link>
+                                        <button onClick={() => handleDelete(tasks.id)} className="btn btn-sm btn-danger">delete</button>
                                     </td>
                                 </tr>
                             )

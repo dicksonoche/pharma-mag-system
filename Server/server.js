@@ -96,9 +96,10 @@ app.get('/get/:id', (req, res) => {
 
 //To create the update api for posting
 app.put('/update/:id', (req, res) => {
+    console.log(req.body);
     const id = req.params.id
-    const sql = "UPDATE tasks set cost = ? WHERE id = ?";
-    con.query(sql, [req.body.cost, id], (err, result) => {
+    const sql = "UPDATE tasks set name = ?, email = ?, cost = ?, description = ? WHERE id = ?";
+    con.query(sql, [req.body.name, req.body.email, req.body.cost, req.body.description, id], (err, result) => {
         if(err) return res.json({ Error: "Update task error in sql" })
         return res.json({ Status: "Success" })
     })

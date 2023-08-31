@@ -3,7 +3,7 @@ import './style.css'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
 
-const Login = () => {
+const VisitorLogin = () => {
     const [cred, setCred] = useState({
         email: '',
         password: ''
@@ -18,10 +18,11 @@ const Login = () => {
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        axios.post('http://localhost:9876/login', cred)
+        axios.post('http://localhost:9876/visitorlogin', cred)
             .then(res => {
                 if (res.data.Status === 'Success') {
-                    navigate('/');
+                    const id = res.data.id
+                    navigate('/visitorpage/'+id);
                 } else {
                     setError(res.data.Error);
                 }
@@ -57,4 +58,4 @@ const Login = () => {
     </>
 }
 
-export default Login
+export default VisitorLogin

@@ -6,6 +6,9 @@ import Profile from "./Profile"
 import Home from "./Home"
 import AddTask from "./AddTask"
 import EditTask from "./EditTask"
+import Start from "./Start"
+import VisitorPage from "./VisitorPage"
+import VisitorLogin from "./VisitorLogin"
 
 function App() {
   return (
@@ -19,6 +22,9 @@ function App() {
           <Route path="/taskEdit/:id" element={<EditTask />}></Route>
         </Route>
         <Route path="/login" element={<Login />}></Route>
+        <Route path="/start" element={<Start />}></Route>
+        <Route path="/visitorlogin" element={<VisitorLogin />}></Route>
+        <Route path="/visitorpage/:id" element={<VisitorPage />}></Route>
       </Routes>
     </BrowserRouter>
   )

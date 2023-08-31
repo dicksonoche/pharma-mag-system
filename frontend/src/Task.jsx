@@ -2,7 +2,7 @@ import { useEffect, useState } from "react"
 import { Link } from "react-router-dom"
 import axios from 'axios'
 
-const TaskOld = () => {
+const Task = () => {
     const [data, setData] = useState([])
 
     const [error, setError] = useState('')
@@ -61,7 +61,7 @@ const TaskOld = () => {
                                 <tr key={index}>
                                     <td>{tasks.name}</td>
                                     <td>{
-                                        <img src={`http://localhost:9876/images/` + tasks.image} alt="" className="task_image" />
+                                        <img style={{ width: 40, height: 40, borderRadius: '50%' }} src={`http://localhost:9876/images/` + tasks.image} alt="" className="task_image" />
                                     }</td>
                                     <td>{tasks.email}</td>
                                     <td>{tasks.description}</td>
@@ -81,4 +81,4 @@ const TaskOld = () => {
     )
 }
 
-export default TaskOld
+export default Task
